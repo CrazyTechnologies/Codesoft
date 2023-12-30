@@ -1,0 +1,225 @@
+@import './reset';
+
+$text-gray: rgb(77, 77, 77);
+$border-gray: #a3a3a3;
+
+@mixin cardShadow {
+    box-shadow: 4px 4px 7px 3px rgba(0, 0, 0, 0.15),
+    -4px -4px 7px 3px #fff
+    ;
+}
+
+@mixin afterClickShadow {
+    box-shadow: inset 3px 3px 3px 1px rgba(0, 0, 0, 0.15),
+    inset -3px -3px 3px 1px #fff
+    ;
+}
+
+@mixin beforeClickShadow {
+    box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.15),
+    -3px -3px 4px 1px #fff
+    ;
+}
+
+@mixin mQ($width) {
+    @media screen and (max-width: $width){
+        @content;
+    }
+}
+
+@import './header';
+@import './footer';
+
+#projects {
+
+    flex-direction: column;
+    padding: 6em;
+    background-color: aliceblue;
+
+    .btn {
+
+        background-color: transparent;
+        // border: 1px solid $border-gray;
+        border: none;
+        outline: none;
+        width: 120px;
+        text-align: center;
+        padding: 10px 0;
+        border-radius: 30px;
+        font-weight: 550;
+        cursor: pointer;
+        transition: .3s;
+        @include beforeClickShadow;
+
+        &:active {
+
+            @include afterClickShadow;
+        }
+    }
+
+    .projects-container {
+
+        // display: flex;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 10px;
+
+
+        .project-card {
+
+            // border: 1px solid red;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 30px 40px;
+            @include cardShadow;
+            border-radius: 30px;
+            // height: auto;
+            // flex: 1;
+
+            .pic-wrapper {
+
+                @include afterClickShadow;
+                width: 100%;
+                border-radius: 30px;
+                padding: 20px;
+                margin-bottom: 15px;
+            }
+
+            .proj-pic {
+
+                // width: 100%;
+                border-radius: 30px;
+                overflow: hidden;
+                
+                
+                img {
+
+                    width: 100%;
+                    // height: 100%;
+                    object-fit: cover;
+                }
+
+            }
+
+            h2 {
+
+                margin-bottom: 20px;
+                font-size: 1.8rem;
+                font-weight: 550;
+                text-align: center;
+            }
+
+            .proj-btns {
+
+                // border: 1px solid;
+                width: 360px;
+                display: flex;
+                justify-content: space-around;
+                padding: 0 40px;
+                flex-wrap: wrap;
+            }
+
+            &:first-child, &:nth-child(2) {
+
+                flex: .5;
+
+            }
+
+
+        }
+    }
+
+    .more-projects-btn {
+
+        margin-top: 50px;
+        padding: 20px;
+        width: 250px;
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+}
+
+@include mQ(768px) {
+
+    #projects {
+
+        padding: 6em 3em 6em 3em;
+
+        .projects-container {
+
+            .project-card {
+
+                h2 {
+
+                    text-align: center;
+                }
+
+                &:first-child, &:nth-child(2) {
+
+                    flex: 1;
+    
+                }
+            }
+        }
+    }
+}
+
+@include mQ(515px) {
+
+    #projects {
+
+        padding: 6em 1em 6em 1em;
+
+        .projects-container {
+
+            gap: 0;
+            padding: 1em 2em;
+            row-gap: 30px;
+            align-items: center;
+            justify-content: center;
+
+            .project-card {
+
+                .proj-btns {
+
+                    width: auto;
+                    height: max-content;
+                    align-items: center;
+
+                    a {
+
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include mQ(425px) {
+
+    #projects {
+
+        .projects-container {
+            
+            padding: 1em;
+
+            .project-card {
+
+                padding: 20px;
+
+
+                .pic-wrapper {
+
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}
+

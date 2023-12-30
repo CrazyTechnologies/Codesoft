@@ -1,0 +1,16 @@
+header nav a.active {
+  color: gray;
+}
+
+#projects h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin: 30px auto;
+}
+#projects .projects-container {
+  max-height: -moz-max-content;
+  max-height: max-content;
+  display: flex;
+  font-weight: wrap;
+  place-content: center;
+}
